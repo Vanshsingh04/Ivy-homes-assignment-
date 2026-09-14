@@ -24,7 +24,7 @@ jobs:
       matrix:
         include:
         - language: java-kotlin
-          build-mode: none
+          build-mode: manual
 
     steps:
     - name: Checkout repository
@@ -35,6 +35,9 @@ jobs:
       with:
         languages: ${{ matrix.language }}
         build-mode: ${{ matrix.build-mode }}
+        
+    - name: Build project with Gradle
+      run: ./gradlew assemble -x test
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
