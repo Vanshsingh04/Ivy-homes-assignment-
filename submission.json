@@ -1,0 +1,11 @@
+{
+  "name": "Vansh Singh",
+  "email": "demo1@ivy.homes",
+  "project": "Elyse Residence - Ivy Homes Assignment",
+  "repository": "https://github.com/Vanshsingh04/Ivy-homes-assignment-.git",
+  "tech_stack": [
+    "Kotlin Multiplatform",
+    "Compose for Web (Wasm)",
+    "Tailwind CSS / Custom Luxury UI"
+  ]
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ivy Homes — Property Search</title>
+    <meta name="description" content="Browse premium property listings in Bangalore with Ivy Homes. Search apartments, villas, rentals and projects.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #0a0a0f;
+            color: #f0f0f5;
+        }
+        #loading {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        #loading.hidden { opacity: 0; pointer-events: none; }
+        .logo-text {
+            font-size: 2.5rem; font-weight: 800;
+            background: linear-gradient(135deg, #00d4aa, #7c3aed, #f472b6);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        .spinner {
+            width: 48px; height: 48px;
+            border: 3px solid rgba(124,58,237,0.2);
+            border-top-color: #00d4aa;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .load-text { margin-top: 1rem; color: #8888aa; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div id="loading">
+        <div class="logo-text">IVY HOMES</div>
+        <div class="spinner"></div>
+        <div class="load-text">Loading application…</div>
+    </div>
+    <canvas id="ComposeTarget"></canvas>
+    <script src="ivyhomes.js"></script>
+    <script>
+        // Hide loading screen after Compose initializes
+        window.addEventListener('compose-ready', () => {
+            document.getElementById('loading').classList.add('hidden');
+            setTimeout(() => document.getElementById('loading').remove(), 600);
+        });
+        // Fallback: hide after 8 seconds
+        setTimeout(() => {
+            const el = document.getElementById('loading');
+            if (el) { el.classList.add('hidden'); setTimeout(() => el.remove(), 600); }
+        }, 8000);
+    </script>
+</body>
+</html>
