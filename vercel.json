@@ -1,4 +1,6 @@
 {
+  "buildCommand": "./gradlew :webapp:wasmJsBrowserDistribution",
+  "outputDirectory": "webapp/build/dist/wasmJs/productionExecutable",
   "rewrites": [
     {
       "source": "/(.*)",
